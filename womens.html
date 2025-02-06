@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Fashion - E-Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .mens {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+        .product-info p {
+            color: #888;
+            font-size: 14px;
+        }
+        .price {
+            color: #333;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .button-group {
+    display: flex;
+    justify-content: space-between; /* Ensure proper spacing */
+    width: 100%; /* Match container width */
+}
+.button-group button {
+    flex: 1; /* Ensure equal button widths */
+    margin: 0 5px; /* Space between buttons */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.button-group button:hover {
+    background-color: #0056b3;
+}
+        .button-group button i {
+            font-size: 18px;
+        }
+        .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px; /* Added margin for spacing */
+}
+        .quantity-selector input {
+            width: 40px;
+            text-align: center;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .endless {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .shopping {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 70%;
+            padding: 8px 30px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #e5e9ed;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dropdown-btn i {
+            margin-left: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Footer Styles */
+    /* Footer Styles */
+.section-p1 {
+    padding: 20px 40px; /* Reduced padding */
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #D8BFD8; /* Slightly darker lavender */
+    color: #333;
+    padding: 10px 20px; /* Reduced padding for tighter layout */
+    font-size: 12px; /* Slightly smaller font size */
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px; /* Reduced margin for columns */
+}
+
+footer .logo {
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+footer h4 {
+    font-size: 14px; /* Keep a slightly bigger font for headings */
+    padding-bottom: 4px; /* Reduced space under the heading */
+    margin: 0; /* Remove extra margin */
+    color: #222;
+}
+
+footer p {
+    font-size: 12px; /* Slightly smaller font size for text */
+    margin: 0 0 4px 0; /* Reduced margin between text */
+    color: #555;
+}
+
+footer a {
+    font-size: 12px; /* Slightly smaller font size */
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 4px; /* Reduced margin between links */
+}
+
+footer .follow {
+    margin-top: 8px; /* Reduced margin for the follow section */
+}
+
+footer .follow i {
+    font-size: 14px; /* Smaller icons */
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover {
+    color: #088178;
+}
+
+/* Install App Section */
+footer .install {
+    margin-top: 8px; /* Reduced margin */
+}
+
+footer .install .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .install img {
+    margin: 3px 0 5px 0; /* Reduced margin between images */
+}
+
+footer .install .row img:nth-child(1),
+footer .install .row img:nth-child(2) {
+    width: 90px; /* Reduced image size */
+    height: auto;
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+footer .install img:last-of-type {
+    width: 140px; /* Reduced image size */
+    height: auto;
+    margin-top: 8px;
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+/* Copyright Section */
+footer .copyright {
+    width: 100%;
+    text-align: center;
+    font-size: 12px; /* Slightly smaller font size */
+    color: #666;
+    margin-top: 5px; /* Reduced margin */
+}
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-bar input {
+                width: 00%;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-btn {
+        background-color: #e5e9ed;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .dropdown-btn i {
+        margin-left: 5px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 5px;
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .logout-link {
+        color: #ff5722;
+        font-weight: bold;
+    }
+
+    .logout-link:hover {
+        color: #e64a19;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <a href="home.html" style="text-decoration: none;">
+                <span class="brand">Style</span><br>
+                <small class="endless">Fashion <span class="shopping">Go</span></small>
+            </a>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search for Products, Brands and More">
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    Categories <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="home.html">Home</a>
+                    <a href="mens.html">Men's Wear</a>
+                    <a href="womens.html">Women's Wear</a>
+                    <a href="mobile.html">Mobiles</a>
+                    <a href="electronics.html">Electronics</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    <i class="fas fa-user"></i> User Account <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="admin.php"><i class="fas fa-user-circle"></i> My Profile</a>
+                    <a href="logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <a href="login.php" class="login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </header>
+
+    <div class="mens">
+        Womens Fashion Collection
+    </div>
+
+    <div class="container">
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="images/w1" alt="Product 1">
+                <div class="product-info">
+                    <h4>Libas Women Maroon Floral</h4>
+                    <p>4.8⭐⭐⭐⭐</p>
+                    <div class="price">₹999</div>
+                    <div class="quantity-selector">
+                        <label for="qty1">Qty:</label>
+                        <input type="number" id="qty1" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Libas Women Maroon Floral', 999, 'images/w1')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="images/w2" alt="Product 2">
+                <div class="product-info">
+                    <h4>Libas Women Lavender Kurta</h4>
+                    <p>4.0⭐⭐⭐⭐</p>
+                    <div class="price">₹799</div>
+                    <div class="quantity-selector">
+                        <label for="qty2">Qty:</label>
+                        <input type="number" id="qty2" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Libas Women Lavender Kurta', 799, 'images/w2')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="images/w6" alt="Product 3">
+                <div class="product-info">
+                    <h4>Queensfab Women Kurta </h4>
+                    <p>5.0⭐⭐⭐⭐⭐</p>
+                    <div class="price">₹1,199</div>
+                    <div class="quantity-selector">
+                        <label for="qty3">Qty:</label>
+                        <input type="number" id="qty3" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Queensfab Women Kurta ', 1199, 'images/w6')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="images/w3" alt="Product 4">
+                <div class="product-info">
+                    <h4>Jaipur Kurti Red Ethnic</h4>
+                    <p>5.0⭐⭐⭐⭐⭐</p>
+                    <div class="price">₹1,499</div>
+                    <div class="quantity-selector">
+                        <label for="qty4">Qty:</label>
+                        <input type="number" id="qty4" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Jaipur Kurti Red Ethnic', 1499, 'images/w3')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/w4" alt="Product 4">
+                <div class="product-info">
+                    <h4>Laxmichhaya Embroidered Kurta</h4>
+                    <p>3.0⭐⭐⭐</p>
+                    <div class="price">₹1,000</div>
+                    <div class="quantity-selector">
+                        <label for="qty4">Qty:</label>
+                        <input type="number" id="qty4" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Laxmichhaya Embroidered Kurta', 1000, 'images/w4')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/w5" alt="Product 4">
+                <div class="product-info">
+                    <h4>Tanjan Floral Print Kurta</h4>
+                    <p>4.0⭐⭐⭐⭐</p>
+                    <div class="price">₹499</div>
+                    <div class="quantity-selector">
+                        <label for="qty4">Qty:</label>
+                        <input type="number" id="qty4" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Tanjan Floral Print Kurta', 499, 'images/w5')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/w8" alt="Product 4">
+                <div class="product-info">
+                    <h4>Colorblock Women Jacket</h4>
+                    <p>4.0⭐⭐⭐⭐</p>
+                    <div class="price">₹2,499</div>
+                    <div class="quantity-selector">
+                        <label for="qty4">Qty:</label>
+                        <input type="number" id="qty4" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Colorblock Women Jacket', 2499, 'images/w8')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/w7" alt="Product 4">
+                <div class="product-info">
+                    <h4>Embroidered Satin Saree</h4>
+                    <p>4.0⭐⭐⭐⭐</p>
+                    <div class="price">₹1,499</div>
+                    <div class="quantity-selector">
+                        <label for="qty4">Qty:</label>
+                        <input type="number" id="qty4" value="1" min="1">
+                    </div>
+                    <div class="button-group">
+                        <button onclick="addToCart('Embroidered Satin Saree', 1499, 'images/w7')">Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="section-p1">
+        <div class="col">
+          <img class="logo" src="images/logo.jpg" alt="">
+          <h4>Contact</h4>
+          <p><strong>Address:</strong> No.45,Jubilee Hills,Road No.36,Hyderabad,India</p>
+          <p><strong>Phone:</strong>+91 1234567890/0123456789</p>
+          <p><strong>Hours:</strong>10:00am - 6:00pm(Mon-Sat)
+          <div class="follow">
+            <h4>Follow Us</h4>
+            <div class="icon">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-pinterest-p"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h4>About</h4>
+          <a href="#">About Us</a>
+          <a href="#">Delivery Information</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+          <h4>My Account</h4>
+          <a href="#">Sign In</a>
+          <a href="#">View Cart</a>
+          <a href="#">My Wishlist</a>
+          <a href="#">Track My Order</a>
+          <a href="#">Help</a>
+        </div>
+        <div class="col install">
+          <h4>Install App</h4>
+          <p>From AppStore or GooglePlay</p>
+          <div class="row">
+            <img src="images/app.png" alt="">
+            <img src="images/google.png" alt="">
+          </div>
+          <p>Secured Payment Gateways</p>
+          <img src="images/pay.jpg" alt="">
+        </div>
+        <div class="copyright">
+          <p>© 2025 Style Inc. All rights reserved.</p>
+        </div>
+      </footer>
+    <script>
+        function addToCart(productName, productPrice, productImage) {
+         const cart = JSON.parse(localStorage.getItem('cart')) || [];
+         cart.push({ name: productName, price: productPrice, image: productImage });
+         localStorage.setItem('cart', JSON.stringify(cart));
+         alert('Item added to cart!');
+     }
+     </script>
+</body>
+</html>

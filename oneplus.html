@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Brands</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f3f6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-btn {
+        background-color: #e5e9ed;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .dropdown-btn i {
+        margin-left: 5px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 5px;
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .logout-link {
+        color: #ff5722;
+        font-weight: bold;
+    }
+
+    .logout-link:hover {
+        color: #e64a19;
+    }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds space between brand name and tagline */
+            text-decoration: none;
+        }
+
+        .logo .brand {
+            color: #007BFF;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .logo .endless {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .logo .shopping {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin-left: 20px; /* Adds spacing between logo and search bar */
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 70%;
+            padding: 8px 30px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #e5e9ed;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dropdown-btn i {
+            margin-left: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Footer Styles */
+.section-p1 {
+    padding: 20px 40px; /* Reduced padding */
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #D8BFD8; /* Slightly darker lavender */
+    color: #333;
+    padding: 10px 20px; /* Reduced padding for tighter layout */
+    font-size: 12px; /* Slightly smaller font size */
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px; /* Reduced margin for columns */
+}
+
+footer .logo {
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+footer h4 {
+    font-size: 14px; /* Keep a slightly bigger font for headings */
+    padding-bottom: 4px; /* Reduced space under the heading */
+    margin: 0; /* Remove extra margin */
+    color: #222;
+}
+
+footer p {
+    font-size: 12px; /* Slightly smaller font size for text */
+    margin: 0 0 4px 0; /* Reduced margin between text */
+    color: #555;
+}
+
+footer a {
+    font-size: 12px; /* Slightly smaller font size */
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 4px; /* Reduced margin between links */
+}
+
+footer .follow {
+    margin-top: 8px; /* Reduced margin for the follow section */
+}
+
+footer .follow i {
+    font-size: 14px; /* Smaller icons */
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover {
+    color: #088178;
+}
+
+/* Install App Section */
+footer .install {
+    margin-top: 8px; /* Reduced margin */
+}
+
+footer .install .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .install img {
+    margin: 3px 0 5px 0; /* Reduced margin between images */
+}
+
+footer .install .row img:nth-child(1),
+footer .install .row img:nth-child(2) {
+    width: 90px; /* Reduced image size */
+    height: auto;
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+footer .install img:last-of-type {
+    width: 140px; /* Reduced image size */
+    height: auto;
+    margin-top: 8px;
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+/* Copyright Section */
+footer .copyright {
+    width: 100%;
+    text-align: center;
+    font-size: 12px; /* Slightly smaller font size */
+    color: #666;
+    margin-top: 5px; /* Reduced margin */
+}
+
+
+    
+        h1 {
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        
+        .featured-products {
+            padding: 20px;
+            background-color: #514873;
+            border: 2px solid #ccc;
+            margin-top: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .featured-products h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+.product-grid {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product {
+    width: 23%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product h3 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.product p {
+    font-size: 14px;
+    color: #555;
+}
+
+.product span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2874f0;
+}
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Ensure proper spacing */
+    width: 100%; /* Match container width */
+}
+.button-group button {
+    flex: 1; /* Ensure equal button widths */
+    margin: 0 5px; /* Space between buttons */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.button-group button:hover {
+    background-color: #0056b3;
+}
+        .button-group button i {
+            font-size: 18px;
+        }
+
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-bar input {
+                width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+            .brand {
+                flex: 1 1 calc(50% - 30px);
+            }
+            .brand {
+                flex: 1 1 100%;
+            }
+        }
+        .samsung {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <a href="home.html" style="text-decoration: none;">
+                <span class="brand">Style</span><br>
+                <small class="endless">Fashion <span class="shopping">Go</span></small>
+            </a>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search for Products, Brands and More">
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    Categories <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="home.html">Home</a>
+                    <a href="mens.html">Men's Wear</a>
+                    <a href="womens.html">Women's Wear</a>
+                    <a href="mobile.html">Mobiles</a>
+                    <a href="electronics.html">Electronics</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    <i class="fas fa-user"></i> User Account <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="admin.php"><i class="fas fa-user-circle"></i> My Profile</a>
+                    <a href="logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <a href="login.php" class="login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </header>
+    <div class="samsung">
+        Oneplus Mobiles
+    </div>
+    <div class="featured-products">
+        <div class="product-grid">
+            <div class="product">
+                    <img src="images/one1.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus Nord CE4 Lite 5G (8GB RAM, 256GB, Super Silver)</h3>
+                    <p>₹29,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                  <img src="images/one2.webp" alt="Product 2">
+                  <h3>OnePlus Nord 2T 5G (12GB RAM, 256GB, Jade Fog)</h3>
+                  <p>₹33,000</p>
+                  <div class="button-group">
+                    <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button><i class="fas fa-heart"></i> Wishlist</button>
+                </div>
+                </a>
+            </div>
+            <div class="product">
+                   <img src="images/one3.webp" alt="Product 3">
+                   <h3>Oneplus 13 5G Mobile Phone 24GB +1TB Blue (Imported)</h3>
+                   <p>₹87,000</p>
+                   <div class="button-group">
+                    <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button><i class="fas fa-heart"></i> Wishlist</button>
+                </div>
+                </a>
+            </div>
+            <div class="product">
+                    <img src="images/one4.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus 10 Pro 5G 12GB Ram, 256GB</h3>
+                    <p>₹35,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                    <img src="images/one5.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus 11R 5G - (Open Box Mobile)</h3>
+                    <p>₹70,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                    <img src="images/one6.webp" width="100%" alt="Product 1">
+                    <h3> OnePlus 12R (Cool Blue, 8GB RAM, 128GB Storage)</h3>
+                    <p>₹89,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                    <img src="images/one7.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus Nord CE 3 Lite 5G (8GB RAM, 128GB, Pastel Lime)</h3>
+                    <p>₹15,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                    <img src="images/one8.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus Nord CE4 Lite 5G (Super Silver, 8GB RAM, 128GB Storage)</h3>
+                    <p>₹19,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+            <div class="product">
+                    <img src="images/one9.webp" width="100%" alt="Product 1">
+                    <h3>OnePlus 10 Pro 5G (12GB RAM, 256GB, Emerald Forest)</h3>
+                    <p>₹40,000</p>
+                    <div class="button-group">
+                        <button><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                </a>  
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin: 20px 0;">
+        <a href="mobile.html" style="text-decoration: none;">
+            <button style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                &#8592; Back to Mobile Page
+            </button>
+        </a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="section-p1">
+        <div class="col">
+          <img class="logo" src="images/logo.jpg" alt="">
+          <h4>Contact</h4>
+          <p><strong>Address:</strong> No.45,Jubilee Hills,Road No.36,Hyderabad,India</p>
+          <p><strong>Phone:</strong>+91 1234567890/0123456789</p>
+          <p><strong>Hours:</strong>10:00am - 6:00pm(Mon-Sat)
+          <div class="follow">
+            <h4>Follow Us</h4>
+            <div class="icon">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-pinterest-p"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h4>About</h4>
+          <a href="#">About Us</a>
+          <a href="#">Delivery Information</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+          <h4>My Account</h4>
+          <a href="#">Sign In</a>
+          <a href="#">View Cart</a>
+          <a href="#">My Wishlist</a>
+          <a href="#">Track My Order</a>
+          <a href="#">Help</a>
+        </div>
+        <div class="col install">
+          <h4>Install App</h4>
+          <p>From AppStore or GooglePlay</p>
+          <div class="row">
+            <img src="images/app.png" alt="">
+            <img src="images/google.png" alt="">
+          </div>
+          <p>Secured Payment Gateways</p>
+          <img src="images/pay.jpg" alt="">
+        </div>
+        <div class="copyright">
+          <p>© 2025 Style Inc. All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+</html>
